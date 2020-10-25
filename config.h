@@ -31,6 +31,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7cdd60a (added custom apps behaviour)
 	/* class    instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
        { "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
        { "eu4.exe",    NULL,     NULL,           0,         1,          0,           0,        -1 },
@@ -39,11 +42,14 @@ static const Rule rules[] = {
        { "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
        { "termite", NULL,     NULL,           0,         0,          1,           0,        -1 },
        { NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+<<<<<<< HEAD
 =======
 	/* class      instance    title       tags mask     isfloating   monitor */
 	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 >>>>>>> 180a256 (custom-config)
+=======
+>>>>>>> 7cdd60a (added custom apps behaviour)
 };
 
 /* layout(s) */
