@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
+#define TERMINAL "termite"
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
@@ -70,7 +70,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
+
+#include <X11/XF86keysym.h>
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -112,6 +114,32 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+	{ 0, 				XF86XK_AudioPlay, 		spawn, 	SHCMD("mpc toggle") },
+	{ 0, 				XF86XK_AudioStop, 		spawn, 	SHCMD("mpc stop") },
+	{ 0, 				XF86XK_AudioPause, 		spawn, 	SHCMD("mpc toggle") },
+	{ 0, 				XF86XK_AudioNext, 		spawn, 	SHCMD("mpc next") },
+	{ 0, 				XF86XK_AudioPrev, 		spawn, 	SHCMD("mpc prev") },
+
+	{ 0, 				XF86XK_AudioMedia, 		spawn, 	SHCMD(TERMINAL " -e ncmpcpp") },
+	{ MODKEY|ShiftMask,		XK_m, 		 		spawn, 	SHCMD(TERMINAL " -e ncmpcpp") },
+
+	{ 0, 				XF86XK_Mail, 			spawn, 	SHCMD(TERMINAL " -e neomutt") },
+	{ 0, 				XF86XK_Calculator, 		spawn, 	SHCMD(TERMINAL " -e bc") },
+
+	{ 0, 				XF86XK_AudioRaiseVolume, 	spawn, 	SHCMD("sound up") },
+	{ 0, 				XF86XK_AudioLowerVolume, 	spawn, 	SHCMD("sound down") },
+
+	{ 0, 				XF86XK_MonBrightnessUp, 	spawn, 	SHCMD("light 5") },
+	{ 0, 				XF86XK_MonBrightnessDown, 	spawn, 	SHCMD("light -5") },
+
+	{ 0, 				XF86XK_PowerOff, 		spawn, 	SHCMD("poweroff") },
+
+	{ 0, 				XF86XK_Save, 			spawn,  SHCMD("screenshot") },
+	{ MODKEY|ShiftMask,	 	XK_s,				spawn,  SHCMD("screenshot -s") },
+
+	{ MODKEY|ShiftMask,		XK_l, 				spawn,	SHCMD("slock") },
+	{ 0, 				XF86XK_Explorer, 		spawn, 	SHCMD(TERMINAL "-e ranger") },
 };
 
 /* button definitions */
