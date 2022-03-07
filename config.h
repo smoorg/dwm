@@ -135,9 +135,9 @@ static Key keys[] = {
 
 	{ 0, 				XF86XK_PowerOff, 		spawn, 	SHCMD("poweroff") },
 
-	{ 0, 				XF86XK_Save, 			spawn,  SHCMD("screenshot") },
-	{ MODKEY|ShiftMask,	 	XK_s,				spawn,  SHCMD("screenshot -s") },
-
+	{ MODKEY|ShiftMask|Mod4Mask, 	XK_s,				spawn,	SHCMD("screenshot") },
+	{ MODKEY|ShiftMask,	 	XK_s,				spawn,	SHCMD("screenshot -s") },
+	{ MODKEY|ShiftMask, 		XK_r, 				spawn,	SHCMD("record") },
 	{ MODKEY|ShiftMask,		XK_l, 				spawn,	SHCMD("slock") },
 	{ 0, 				XF86XK_Explorer, 		spawn, 	SHCMD(TERMINAL "-e ranger") },
 };
