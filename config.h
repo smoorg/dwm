@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#define TERMINAL "termite"
+#define TERMINAL "alacritty"
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
@@ -39,6 +39,7 @@ static const Rule rules[] = {
        { "Firefox", 	NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
        { "St",      	NULL,     NULL,           0,         0,          1,           0,        -1 },
        { "termite", 	NULL,     NULL,           0,         0,          1,           0,        -1 },
+       { "alacritty", 	NULL,     NULL,           0,         0,          1,           0,        -1 },
        { NULL,      	NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -46,6 +47,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -135,7 +137,7 @@ static Key keys[] = {
 
 	{ 0, 				XF86XK_PowerOff, 		spawn, 	SHCMD("poweroff") },
 
-	{ MODKEY|ShiftMask|Mod4Mask, 	XK_s,				spawn,	SHCMD("screenshot") },
+	{ MODKEY|ShiftMask, 		XK_a,				spawn,	SHCMD("screenshot") },
 	{ MODKEY|ShiftMask,	 	XK_s,				spawn,	SHCMD("screenshot -s") },
 	{ MODKEY|ShiftMask, 		XK_r, 				spawn,	SHCMD("record") },
 	{ MODKEY|ShiftMask,		XK_l, 				spawn,	SHCMD("slock") },
