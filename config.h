@@ -31,14 +31,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class    	instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-       { "Gimp",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
+       // { "Gimp",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
        { "eu4.exe",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
        { "wine",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
-       { "BattleTech",  NULL,     NULL,           0,         1,          0,           0,        -1 },
-       { "steam",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
+       // { "steam",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
        { "Firefox", 	NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-       { "St",      	NULL,     NULL,           0,         0,          1,           0,        -1 },
-       { "termite", 	NULL,     NULL,           0,         0,          1,           0,        -1 },
        { "alacritty", 	NULL,     NULL,           0,         0,          1,           0,        -1 },
        { NULL,      	NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -138,7 +135,7 @@ static Key keys[] = {
 	{ 0, 				XF86XK_PowerOff, 		spawn, 	SHCMD("poweroff") },
 
 	{ MODKEY|ShiftMask, 		XK_a,				spawn,	SHCMD("screenshot") },
-	{ MODKEY|ShiftMask,	 	XK_s,				spawn,	SHCMD("screenshot -s") },
+	{ MODKEY|ShiftMask,	 	    XK_s,				spawn,	SHCMD("screenshot -s") },
 	{ MODKEY|ShiftMask, 		XK_r, 				spawn,	SHCMD("record") },
 	{ MODKEY|ShiftMask,		XK_l, 				spawn,	SHCMD("slock") },
 	{ 0, 				XF86XK_Explorer, 		spawn, 	SHCMD(TERMINAL "-e ranger") },
