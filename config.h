@@ -7,8 +7,8 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=13" };
-static const char dmenufont[]       = "JetBrains Mono:size=13";
+static const char *fonts[]          = { "JetBrainsMono Nerd Font Mono:size=13" };
+static const char dmenufont[]       = "JetBrainsMono Nerd Font Mono:size=13";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -30,14 +30,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class    	instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-       // { "Gimp",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
-       { "eu4.exe",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
-       { "wine",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
-       // { "steam",    	NULL,     NULL,           0,         1,          0,           0,        -1 },
-       { "Firefox", 	NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-       { "alacritty", 	NULL,     NULL,           0,         0,          1,           0,        -1 },
-       { NULL,      	NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class	instance	title           tags 	mask	isfloating	 isterminal	noswallow	monitor */
+	{ "Gimp",	NULL,		NULL,		0,	1,	0,		 0,		-1 },
+	{ "wine",	NULL,		NULL,		0,	1,	0,		 0,		-1 },
+	{ "steam",	NULL,		NULL,		0,	1,	0,		 0,		-1 },
+	{ "firefox", 	NULL,		NULL,		2,	0,	1,		-1,		-1 },
+	{ "zoom", 	NULL,		NULL,		4,	4,	1,		-1,		-1 },
+	{ "alacritty", 	NULL,		NULL,		0,	0,	1,		 0,		-1 },
+	{ NULL,	  	NULL,		"Event Tester",	0,	0,	0,		 1,		-1 } /* xev */
 };
 
 /* layout(s) */
@@ -114,31 +114,40 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
+        /* =================== CUSTOM KEYS ============================= */
+
+	{ MODKEY,                       XK_q,      killclient,     {0} },
+
+        /* Audio */
 	{ 0, 				XF86XK_AudioPlay, 		spawn, 	SHCMD("mpc toggle") },
 	{ 0, 				XF86XK_AudioStop, 		spawn, 	SHCMD("mpc stop") },
 	{ 0, 				XF86XK_AudioPause, 		spawn, 	SHCMD("mpc toggle") },
 	{ 0, 				XF86XK_AudioNext, 		spawn, 	SHCMD("mpc next") },
 	{ 0, 				XF86XK_AudioPrev, 		spawn, 	SHCMD("mpc prev") },
-
 	{ 0, 				XF86XK_AudioMedia, 		spawn, 	SHCMD(TERMINAL " -e ncmpcpp") },
 	{ MODKEY|ShiftMask,		XK_m, 		 		spawn, 	SHCMD(TERMINAL " -e ncmpcpp") },
-
-	{ 0, 				XF86XK_Mail, 			spawn, 	SHCMD(TERMINAL " -e neomutt") },
-	{ 0, 				XF86XK_Calculator, 		spawn, 	SHCMD(TERMINAL " -e bc") },
-
 	{ 0, 				XF86XK_AudioRaiseVolume, 	spawn, 	SHCMD("sound up") },
 	{ 0, 				XF86XK_AudioLowerVolume, 	spawn, 	SHCMD("sound down") },
 
+        /* Misc */
+	{ 0, 				XF86XK_Mail, 			spawn, 	SHCMD(TERMINAL " -e neomutt") },
+	{ 0, 				XF86XK_Calculator, 		spawn, 	SHCMD(TERMINAL " -e bc") },
+	{ 0, 				XF86XK_Explorer, 		spawn, 	SHCMD(TERMINAL "-e ranger") },
+
+        /* Brightness */
 	{ 0, 				XF86XK_MonBrightnessUp, 	spawn, 	SHCMD("light 5") },
 	{ 0, 				XF86XK_MonBrightnessDown, 	spawn, 	SHCMD("light -5") },
 
-	{ 0, 				XF86XK_PowerOff, 		spawn, 	SHCMD("poweroff") },
-
+        /* Screen capture */
 	{ MODKEY|ShiftMask, 		XK_a,				spawn,	SHCMD("screenshot") },
-	{ MODKEY|ShiftMask,	 	    XK_s,				spawn,	SHCMD("screenshot -s") },
+	{ MODKEY|ShiftMask,	 	XK_s,				spawn,	SHCMD("screenshot -s") },
 	{ MODKEY|ShiftMask, 		XK_r, 				spawn,	SHCMD("record") },
 	{ MODKEY|ShiftMask,		XK_l, 				spawn,	SHCMD("slock") },
-	{ 0, 				XF86XK_Explorer, 		spawn, 	SHCMD(TERMINAL "-e ranger") },
+        /* Power */
+	{ 0, 				XF86XK_PowerOff, 		spawn, 	SHCMD("poweroff") },
+
+        /* =================== END CUSTOM KEYS ============================= */
+
 };
 
 /* button definitions */
