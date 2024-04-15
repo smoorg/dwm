@@ -133,6 +133,7 @@ static Key keys[] = {
 	{ 0, 				XF86XK_Mail, 			spawn, 	SHCMD(TERMINAL " -e neomutt") },
 	{ 0, 				XF86XK_Calculator, 		spawn, 	SHCMD(TERMINAL " -e bc") },
 	{ 0, 				XF86XK_Explorer, 		spawn, 	SHCMD(TERMINAL "-e ranger") },
+	{ MODKEY, 				XK_e, 				spawn, 	SHCMD("emotes") },
 
         /* Brightness */
 	{ 0, 				XF86XK_MonBrightnessUp, 	spawn, 	SHCMD("light 5") },
